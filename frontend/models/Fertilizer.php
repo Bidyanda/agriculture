@@ -1,7 +1,7 @@
 <?php
 
 namespace frontend\models;
-
+use yii\web\UploadedFile;
 use Yii;
 
 /**

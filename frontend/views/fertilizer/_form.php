@@ -36,7 +36,7 @@ use wbraganca\dynamicform\DynamicFormWidget;
         <h4 class="text-center">
             <p>
               <b class="text-primary" style="font-size:22px;"><u>FORM-'A1'</u></b><br />
-              <b class="text-primary" style="font-size:22px;">MEMORANDUM OF INTIMATION,</b><br />
+              <b class="text-primary" style="font-size:22px;">MEMORANDUM OF INTIMATION</b><br />
               <div><small>[See Clause 8(2)]</small></div>
             </p>
             <div><small>Fields marked (<span class="text-danger">*</span>) are mandatory</small></div>
@@ -44,7 +44,7 @@ use wbraganca\dynamicform\DynamicFormWidget;
         <div align='center'>
           <?= $form->field($model, 'is_renew')->radiolist(['1'=>'New','2'=>'Renewal'])->label('Application for Licence <span class="text-danger">*</span>') ?>
         </div>
-        <?php //if($model->is_renew == '2') {?>
+        <?php if($model->is_renew == '2') {?>
           <?= $form->field($model, 'licence')->textInput()->label($model->getAttributeLabel('licence').' <span class="text-danger">*</span>') ?>
           <?= $form->field($model, 'licence_grant_date')->widget(DatePicker::className(), [
                                                                             'options' => ['readonly' => true,'class'=>'form-control','autocomplete'=>'off','placeholder'=>'Date of licence grant'],
@@ -53,7 +53,7 @@ use wbraganca\dynamicform\DynamicFormWidget;
                                                                                 'format' => 'dd-mm-yyyy'
                                                                             ]
                                                                     ])->label($model->getAttributeLabel('Date of grant').' <span class="text-danger">*</span>')  ?>
-        <?php //} ?>
+        <?php } ?>
         <h4 class="text-left">
             <div><b class="text-primary">1. Place of business(Please give full address)</b></div>
         </h4>
@@ -99,7 +99,7 @@ use wbraganca\dynamicform\DynamicFormWidget;
                   'min' => 1, // QUESTION: , // 0 or 1 (default 1)
                   'insertButton' => '.add-item', // css class
                   'deleteButton' => '.remove-item', // css class
-                  'model' => $modelsInsecticide[0],
+                  'model' => $modelsFertilizerItem[0],
                   'formId' => 'fertilizer-form',
                   'formFields' => [
                       'fertilizer_name',
@@ -108,7 +108,7 @@ use wbraganca\dynamicform\DynamicFormWidget;
               ]);
               ?>
               <div class="container-items"><!-- widgetContainer -->
-                <?php foreach ($modelsInsecticide as $i => $modelInsecticide): ?>
+                <?php foreach ($modelsFertilizerItem as $i => $modelFertilizerItem): ?>
                     <div class="item panel panel-default"><!-- widgetBody -->
                         <div class="panel-heading">
                             <div class="pull-right">
@@ -120,12 +120,12 @@ use wbraganca\dynamicform\DynamicFormWidget;
                         <div class="panel-body">
                             <?php
                                 // necessary for update action.
-                                if (! $modelInsecticide->isNewRecord) {
-                                    echo Html::activeHiddenInput($modelInsecticide, "[{$i}]id");
+                                if (! $modelFertilizerItem->isNewRecord) {
+                                    echo Html::activeHiddenInput($modelFertilizerItem, "[{$i}]id");
                                 }
                             ?>
-                              <?= $form->field($modelInsecticide, "[{$i}]sl_no",['template' => '<div class="col-md-6">{input}{error}</div>'])->textInput(['placeholder'=>'Name of Fertilizer'])->label(false) ?>
-                              <?= $form->field($model, "[{$i}]manufacture",['template' => '<div class="col-md-6">{input}{error}</div>'])->radiolist([ 'Yes' => 'Yes', 'No' => 'No'])->label(false)  ?>
+                              <?= $form->field($modelFertilizerItem, "[{$i}]fertilizer_name",['template' => '{label}<div class="col-md-4">{input}{error}</div>'])->textInput(['placeholder'=>'Name of Fertilizer'])->label(false) ?>
+                              <?= $form->field($modelFertilizerItem, "[{$i}]whether_cert_form_o_attach",['template' => '{label}<div class="col-md-4 ">{input}{error}</div>'])->radiolist([ 'Yes' => 'Yes', 'No' => 'No'])->label('Whether certificate of source in Form "O" is attached')  ?>
                         </div>
                     </div>
                 <?php endforeach; ?>
@@ -147,7 +147,14 @@ use wbraganca\dynamicform\DynamicFormWidget;
     </div>
 </div>
 <style>
-
+.form-horizontal .control-label {
+    padding-top: 0px;
+    margin-bottom: 0;
+    text-align: right;
+}
+.panel-body > .form-group {
+    margin-bottom: 0px;
+}
 container-items .
 [role="radiogroup"] {
 	margin-top: 12px;
@@ -162,4 +169,40 @@ container-items .
     padding: 24px;
     padding-top: 0.2%;
 }
+
+.container-items .form-group:before,.container-items .form-group:after {
+  display:inline;
+}
 </style>
+<?php
+
+$this->registerJs(<<<JS
+
+$('#profile-form').on('keyup keypress', function(e) {
+    var keyCode = e.keyCode || e.which;
+    if (keyCode === 13) {
+        e.preventDefault();
+        return false;
+    }
+});
+
+$("#profile-form").on("beforeSubmit", function() {
+    // not compulsory
+	// let qual = $("input[name='Personal[educational_qualification]']:checked").val();
+ //    if(qual == '1') {
+ //        if(!$("#personal-examination_2").val().length || !$("#personal-year_of_passing_2").val().length || !$("#personal-subjects_taken_2").val().length || !$("#personal-percentage_2").val().length) {
+ //            toast('Please enter Higher Examination Details', 'bg-red');
+ //            $("#personal-examination_2").focus();
+ //            return false;
+ //        }
+ //    }
+    $(".loader").show();
+	$("#submit-btn").prop("disabled", true);
+});
+
+$("input[name='Fertilizer[is_renew]']").change(function() {
+        location.href = "fertilizer?is_renew="+this.value;
+});
+
+JS
+);

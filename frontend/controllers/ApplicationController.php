@@ -133,32 +133,29 @@ class ApplicationController extends Controller
       ]);
     }
 
-    public function actionFertilizer()
+    public function actionFertilizer($is_renew = '')
     {
       $model = new Fertilizer();
       $flag = 0;
-      $modelsFertilizer = [new FertilizerItem()];
+      $modelsFertilizerItem = [new FertilizerItem()];
       if(!empty($is_renew)){
         $model->is_renew = $is_renew;
       }
       if($model->load(Yii::$app->request->post())){
-        $modelsFertilizer = Model::createMultiple(FertilizerItem::classname());
-        Model::loadMultiple($modelsFertilizer, Yii::$app->request->post());
-
-        if(!$model->upload('details_of_safety_equipment_antidotes')) {
-
-        }
-
+        $modelsFertilizerItem = Model::createMultiple(FertilizerItem::classname());
+        Model::loadMultiple($modelsFertilizerItem, Yii::$app->request->post());
         $model->created_by = Yii::$app->user->identity->id;
         $model->user_id = Yii::$app->user->identity->id;
         $model->application_date = date('Y-m-d');
+        $model->licence_grant_date = date('Y-m-d',strtotime($model->licence_grant_date));
         $transaction = \Yii::$app->db->beginTransaction();
               try {
-                      if($model->save(false)){
-                        foreach ($modelsFertilizer as $modelInsecticide) {
-
-                          if(!$flag = $modelInsecticide->save())
+                      if($model->save()){
+                        foreach ($modelsFertilizerItem as $modelFertilizerItem) {
+                          $modelFertilizerItem->f_id = $model->id;
+                          if(!$flag = $modelFertilizerItem->save())
                             break;
+
                         }
                       }
                       if ($flag) {
@@ -176,7 +173,7 @@ class ApplicationController extends Controller
       }
       return $this->render('/fertilizer/_form',[
         'model'=>$model,
-        'modelsInsecticide'=>[new Insecticide()],
+        'modelsFertilizerItem'=>$modelsFertilizerItem,
       ]);
     }
 }
