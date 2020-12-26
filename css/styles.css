@@ -1,0 +1,329 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto&family=Roboto+Condensed&family=Alata&display=swap");
+
+div, p, span, h1, h2, h3, h4, h5, h5, small, th, td, a {
+	font-family: 'Roboto', sans-serif;
+	color: #333;
+}
+th a:hover {
+	text-decoration: none;
+}
+.page-title {
+	font-family: 'Alata', sans-serif;
+	font-size: 26px;
+	margin-bottom: 12px;
+	color: #065446;
+}
+.btn {
+	-webkit-box-shadow: 0 2px 2px 0 rgba(0,0,0,0.14),0 3px 1px -2px rgba(0,0,0,0.12),0 1px 5px 0 rgba(0,0,0,0.2);
+	box-shadow: 0 2px 2px 0 rgba(0,0,0,0.14),0 3px 1px -2px rgba(0,0,0,0.12),0 1px 5px 0 rgba(0,0,0,0.2);
+	font-family: 'Roboto Condensed', sans-serif;
+	text-transform: uppercase !important;
+}
+.logo {
+	max-height: 70px;
+}
+
+.content-board {
+	border: thin solid #ccc;
+	border-radius: 6px;
+	padding: 18px;
+	margin-bottom: 10px;
+	background-color: #fff;
+}
+@media only screen and (max-width: 1024px) {
+	[role="radiogroup"] .radio {
+		display: block !important;
+	}
+}
+@media only screen and (max-width: 667px) {
+}
+@media only screen and (max-width: 480px) {
+	[role="radiogroup"] .radio {
+		display: block !important;
+	}
+	.content-board {
+		padding: 8px;
+	}
+}
+.card {
+	-webkit-box-shadow: 0 4px 5px 0 rgba(0,0,0,0.14),0 1px 10px 0 rgba(0,0,0,0.12),0 2px 4px -1px rgba(0,0,0,0.3);
+	box-shadow: 0 4px 5px 0 rgba(0,0,0,0.14),0 1px 10px 0 rgba(0,0,0,0.12),0 2px 4px -1px rgba(0,0,0,0.3);
+	background-color: #fff;
+	border-radius: 2px;
+}
+.card-header {
+	font-size: 24px;
+	font-family: 'Alata', sans-serif;
+	border-bottom: thin solid #ccc;
+	text-transform: uppercase;
+}
+.card-header, .card-body {
+	padding: 24px;
+}
+
+.help-block {
+	font-family: 'Roboto Condensed', sans-serif;
+	font-size: 12px;
+}
+
+.hasloader {
+	position: relative;
+}
+.loader {
+	display: none;
+}
+.loader-cover {
+	position: absolute;
+	width: 100%;
+	height: 100%;
+	background-color: #fff;
+	z-index: 10;
+	top: 0;
+	left: 0;
+	opacity: 0.7;
+}
+.loader-text {
+	position: absolute;
+	z-index: 100;
+	left: 40%;
+	top: 40%;
+	font-size: 150%;
+}
+
+textarea {
+	resize: none;
+}
+.input-group.date input, .hint {
+	cursor: pointer;
+}
+.inlineradio {
+	margin-top: 12px;
+}
+.inlineradio div {
+	display: inline;
+	margin-right: 12px;
+}
+
+#snackbar.bg-green {
+	background-color: #178c27;
+}
+#snackbar.bg-red {
+	background-color: #f44336;
+}
+
+#snackbar {
+	color: #fff;
+	visibility: hidden;
+	min-width: 250px;
+	margin-left: -125px;
+	text-align: center;
+	border-radius: 2px;
+	padding: 12px;
+	position: fixed;
+	z-index: 2000;
+	left: 50%;
+	bottom: 30px;
+}
+
+#snackbar.show {
+  visibility: visible;
+  -webkit-animation: fadein 0.5s, fadeout 0.5s 3.5s;
+  animation: fadein 0.5s, fadeout 0.5s 3.5s;
+}
+
+@-webkit-keyframes fadein {
+  from {bottom: 0; opacity: 0;}
+  to {bottom: 30px; opacity: 1;}
+}
+
+@keyframes fadein {
+  from {bottom: 0; opacity: 0;}
+  to {bottom: 30px; opacity: 1;}
+}
+
+@-webkit-keyframes fadeout {
+  from {bottom: 30px; opacity: 1;}
+  to {bottom: 0; opacity: 0;}
+}
+
+@keyframes fadeout {
+  from {bottom: 30px; opacity: 1;}
+  to {bottom: 0; opacity: 0;}
+}
+
+.breadcrumb {
+	background-color: transparent;
+	padding: 0px 15px;
+	margin-bottom: 0px;
+	border: none;
+	float: right;
+}
+.breadcrumb > li {
+	font-size: 12px;
+}
+
+.modal-header > .header-text {
+	font-family: 'Alata', sans-serif;
+    font-size: 20px;
+    font-weight: bold;
+    color: #065446;
+    padding: 4px 14px 14px 14px;
+    margin-bottom: 8px;
+    border-bottom: thin solid #ccc;
+}
+.modal-body .btn-default, .modal-body .btn-success, .modal-body .btn-danger {
+    -moz-box-shadow: none !important;
+    -webkit-box-shadow: none !important;
+    box-shadow: none !important;
+    min-width: 80px;
+    border-radius: 18px;
+}
+.modal-body .btn-success, .modal-body .btn-default, .modal-body .btn-danger {
+    background-color: #fff;
+}
+.modal-body .btn-success {
+    color: #5cb85c;
+    border: thin solid #5cb85c;
+}
+.modal-body .btn-default {
+    color: #ccc;
+    border: thin solid #ccc;
+}
+.modal-body .btn-danger {
+    color: #d43f3a;
+    border: thin solid #d43f3a;
+}
+.modal-body .btn-xs, .modal-body .btn-sm {
+    border-radius: 4px !important;
+}
+.modal {
+    background: rgba(76, 76, 85, 0.32) !important;
+}
+.modal-body .panel-body {
+    box-shadow: none;
+}
+.modal-content {
+    padding: 8px;
+    border-radius: 10px !important;
+    background-color: #f7f7f7;
+}
+.modal-header {
+    border-bottom: none;
+    padding: 4px 0px 0 0;
+}
+.modal-header button.close {
+    font-size: 28px;
+    color: red;
+    opacity: 0.4;
+    margin-right: 6px;
+    position: absolute;right: 1%;
+}
+.modal.fade .modal-dialog {
+    -webkit-transform: scale(0.3);
+    -moz-transform: scale(0.3);
+    -ms-transform: scale(0.3);
+    transform: scale(0.3);
+    opacity: 0;
+    -webkit-transition: all 0.4s;
+    -moz-transition: all 0.4s;
+    transition: all 0.4s;
+}
+.modal.fade.in .modal-dialog {
+    -webkit-transform: scale(1);
+    -moz-transform: scale(1);
+    -ms-transform: scale(1);
+    transform: scale(1);
+    opacity: 1;
+}
+#modal-xl .modal-dialog {
+	width: 95%;
+}
+
+/*To make background blur, page must be enclosed in class "wrap"*/
+body.modal-open .breadcrumbs, body.modal-open .wrap {
+    -webkit-filter: blur(3px);
+    -moz-filter: blur(3px);
+    -o-filter: blur(3px);
+    -ms-filter: blur(3px);
+    filter: blur(3px);
+}
+
+.filterbar .form-control {
+	height: 28px;
+	padding: 4px 10px;
+}
+
+.table-responsive {
+	border: none;
+	background-color: #fff;
+}
+.grid-view table {
+	border: thin solid #ccc;
+}
+.grid-view td a .fas {
+	margin-left: 6px;
+}
+
+.input-daterange input {
+    cursor: pointer;
+}
+.datepicker-switch {
+	background-color: #e3f2fd;
+}
+.datepicker-switch:hover, .datepicker-switch:active, .datepicker-switch:focus {
+	background-color: #bbdefb !important;
+}
+.disabled.day {
+	color: #ccc !important;
+}
+.form-control, .input-group-addon {
+	border-color: #888;
+}
+
+.select2-container .select2-selection--single {
+	height: 34px !important;
+}
+.select2-container--default .select2-selection--single .select2-selection__arrow,
+.select2-container--default .select2-selection--single .select2-selection__clear {
+	height: 32px !important;
+}
+.select2-container--default .select2-selection--single .select2-selection__rendered {
+	line-height: 34px !important;
+}
+.select2-container {
+	width: 100% !important;
+}
+.sub-header {
+	color: #065446;
+}
+
+.nav-tabs > li.active > a, .nav-tabs > li.active > a:hover, .nav-tabs > li.active > a:focus {
+	border-color: #065446;
+	border-bottom-color: transparent;
+	color: #065446;
+	font-weight: bold;
+}
+.nav-tabs, .nav-tabs > li > a:hover {
+	border-bottom-color: #065446;
+}
+.nav-tabs > li > a {
+	color: #888;
+}
+
+.navbar-nav > .dropdown > .dropdown-toggle > .caret {
+    color: #0a0808;
+}
+section {
+	border-left: none;
+	border-right: none;
+	border-radius: 0px;
+	border-width: 2px;
+	border-bottom: none;
+	border: thin solid #ccc;
+	border-radius: 3px;
+	padding-top: 8px;
+	margin-bottom: 8px;
+}
+
+/* pc : 66.8
+Roll No. : 6682 */

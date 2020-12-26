@@ -1,0 +1,51 @@
+@page {
+	margin: 1cm;
+}
+
+table {
+	width: 100%;
+	border-collapse: collapse;
+}
+td, th, span, div, i, b {
+	font-size: 14px;
+}
+
+.text-center {
+	text-align: center;
+}
+.stu-photo {
+	max-height: 150px;
+	max-width: 120px;
+	border: thin solid #777;
+}
+.center_pic {
+	max-width: 370px;
+}
+.bold-big {
+	font-size: 16px;
+	font-weight: bold;
+}
+.bordered, .table-bordered th, .table-bordered td {
+	border: thin solid #777;
+}
+.student-info td, .student-info div {
+	font-weight: bold;
+}
+.student-info td {
+	vertical-align: top;
+	padding: 4px;
+}
+.light-text {
+	color: #444;
+}
+.sign {
+	max-height: 100px;
+	max-width: 220px;
+	border: thin solid #777;
+}
+.text-justify {
+	text-align: justify;
+}
+.margin-bottom {
+	margin-bottom: 6px;
+}
